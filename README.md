@@ -4,7 +4,15 @@ A library of [Agent Skills](https://agentskills.io) for building software with A
 
 Each skill is a self-contained folder with a `SKILL.md` file: instructions, scripts and references that an agent loads only when the task calls for it. Skills work with Claude Code, Claude.ai and other agents that support the Agent Skills format.
 
-## Planned skills
+## Skills
+
+### Setup
+
+| Skill | What it does |
+| --- | --- |
+| [brainstorm](skills/brainstorm) | Interviews the product owner with focused questions and builds a connected knowledge graph of the project: purpose, users, vision, goals, features, risks and roadmap. Done when every idea is explored and linked. |
+
+### Planned
 
 | Area | Skills |
 | --- | --- |
@@ -23,11 +31,13 @@ skills/<skill-name>/
 ├── references/     # optional: docs the agent reads when needed
 └── assets/         # optional: templates and files used in output
 template/SKILL.md   # starting point for a new skill
+.claude-plugin/marketplace.json   # groups skills into installable sets
 ```
 
 ## Using a skill
 
-- **Claude Code:** copy a skill folder into `~/.claude/skills/` (personal) or `.claude/skills/` (per project).
+- **Claude Code (plugin):** run `/plugin marketplace add AshR-03/ashley-ray-skills`, then `/plugin install setup-skills@ashley-ray-skills`.
+- **Claude Code (single skill):** copy a skill folder into `~/.claude/skills/` (personal) or `.claude/skills/` (per project).
 - **Claude.ai:** zip the skill folder and upload it under Settings → Capabilities → Skills.
 
 ## Creating a skill

@@ -1,0 +1,21 @@
+{
+  "name": "ashley-ray-skills",
+  "owner": {
+    "name": "Ashley Ray"
+  },
+  "metadata": {
+    "description": "Agent Skills for building software with AI agents across an agile development lifecycle",
+    "version": "0.1.0"
+  },
+  "plugins": [
+    {
+      "name": "setup-skills",
+      "description": "Skills for starting a project: shaping the idea before any requirements or code",
+      "source": "./",
+      "strict": false,
+      "skills": [
+        "./skills/brainstorm"
+      ]
+    }
+  ]
+}

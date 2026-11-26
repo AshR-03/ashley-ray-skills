@@ -121,6 +121,18 @@ When `check` reports isolated nodes or detached groups, ask a question whose ans
 
 Read `references/questions.md` for a question bank for each node type, follow-up patterns, and more good and bad examples.
 
+## When things go wrong
+
+| Problem | What to do |
+| --- | --- |
+| `No graph at … Run init first.` | No brainstorm has started here. Run `init`, or pass `--graph` if the graph lives somewhere else. |
+| `… already exists` when running `init` | A brainstorm is in progress. Run `show` and `check` and resume it. Use `--force` only if the owner asks to start over. |
+| `Unknown node '…'` | The message lists the known ids. Use one of them, or `add-node` first if the idea is new. |
+| `That edge already exists.` | Nothing to do: the link is already recorded. |
+| `check` still fails after every question is closed | Read its report. Isolated nodes and detached groups need a linking question; missing coverage needs a question for that type. Never add `relates-to` edges just to make it pass. |
+| `python: command not found` | Run the script with `python3` instead. |
+| The owner wants to stop early | Offer the wrap-up from step 3: close the remaining questions as `assumption` nodes with their agreement, then `render`. |
+
 ## If AskUserQuestion isn't available
 
 Some agents don't have an AskUserQuestion tool. Then ask in plain text, numbered with the options listed under each and an "or tell me something else" line, and still at most 4 questions per message.

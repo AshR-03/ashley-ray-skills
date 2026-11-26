@@ -20,6 +20,12 @@ One or two sentences on the outcome this skill produces.
 
 Describe the expected output and its format.
 
+## When things go wrong
+
+| Problem | What to do |
+| --- | --- |
+| An exact error message, or a situation the agent will meet | The concrete fix. "Try again" is not a fix. |
+
 ## References
 
 - `references/example.md`: when to read it.

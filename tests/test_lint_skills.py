@@ -55,6 +55,7 @@ class LintTestCase(unittest.TestCase):
         self.write("skills/demo/spec.md", GOOD_SPEC)
         self.write("skills/demo/scripts/run.py", "import json\nimport sys\n")
         self.write("skills/demo/references/guide.md", "# Guide\n")
+        self.write("evals/demo/case-one/prompt.md", "---\nruns: 1\n---\n\nDo the demo.\n")
         self.write("README.md", "| [demo](skills/demo) | Demo |\n")
         self.marketplace({"plugins": [{"name": "set", "source": "./", "skills": ["./skills/demo"]}]})
 
@@ -94,6 +95,7 @@ class SkillTests(LintTestCase):
         self.write("skills/Demo_X/spec.md", GOOD_SPEC)
         self.write("skills/Demo_X/scripts/run.py", "")
         self.write("skills/Demo_X/references/guide.md", "")
+        self.write("evals/Demo_X/case/prompt.md", "Do it.\n")
         self.write("README.md", "(skills/demo) (skills/Demo_X)")
         self.marketplace({"plugins": [{"name": "s", "source": "./",
                                        "skills": ["./skills/demo", "./skills/Demo_X"]}]})
@@ -164,6 +166,10 @@ class SkillTests(LintTestCase):
     def test_script_syntax_error(self):
         self.write("skills/demo/scripts/run.py", "def broken(:\n")
         self.assertOnly("does not parse")
+
+    def test_missing_evals_warns(self):
+        (self.root / "evals" / "demo" / "case-one" / "prompt.md").unlink()
+        self.assertOnly("evals/demo: warning: has no eval cases")
 
     def test_spec_required(self):
         (self.skill / "spec.md").unlink()

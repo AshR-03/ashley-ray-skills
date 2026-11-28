@@ -1,0 +1,238 @@
+{
+  "title": "Gym app",
+  "horizon": "long",
+  "created": "2026-11-26T12:00:00Z",
+  "updated": "2026-11-26T12:00:00Z",
+  "nodes": {
+    "idea": {
+      "type": "idea",
+      "label": "An app that helps small gyms keep members coming back",
+      "detail": "",
+      "status": "explored",
+      "open_questions": []
+    },
+    "business": {
+      "type": "purpose",
+      "label": "Business: sell it to gyms as a subscription",
+      "detail": "",
+      "status": "explored",
+      "open_questions": []
+    },
+    "members": {
+      "type": "stakeholder",
+      "label": "Members of independent gyms (one or two locations)",
+      "detail": "",
+      "status": "explored",
+      "open_questions": []
+    },
+    "owners": {
+      "type": "stakeholder",
+      "label": "Gym owners (they pay)",
+      "detail": "",
+      "status": "explored",
+      "open_questions": [
+        "Would owners pay per member or a flat fee?"
+      ]
+    },
+    "retention": {
+      "type": "goal",
+      "label": "Keep members coming back",
+      "detail": "",
+      "status": "explored",
+      "open_questions": []
+    },
+    "progress-emails": {
+      "type": "feature",
+      "label": "Weekly progress emails",
+      "detail": "",
+      "status": "explored",
+      "open_questions": []
+    },
+    "owner-adoption": {
+      "type": "risk",
+      "label": "Gym owners may not adopt it",
+      "detail": "",
+      "status": "explored",
+      "open_questions": []
+    },
+    "solo-dev": {
+      "type": "constraint",
+      "label": "Built by one developer in spare time",
+      "detail": "",
+      "status": "explored",
+      "open_questions": []
+    },
+    "streak-first": {
+      "type": "vision",
+      "label": "Members open the app and see their weekly streak first",
+      "detail": "",
+      "status": "explored",
+      "open_questions": []
+    },
+    "streak-dashboard": {
+      "type": "feature",
+      "label": "Streak dashboard",
+      "detail": "",
+      "status": "explored",
+      "open_questions": []
+    },
+    "mvp": {
+      "type": "milestone",
+      "label": "MVP in 3 months: progress emails for one pilot gym",
+      "detail": "",
+      "status": "explored",
+      "open_questions": []
+    },
+    "v2": {
+      "type": "milestone",
+      "label": "Version 2: streak dashboard",
+      "detail": "",
+      "status": "explored",
+      "open_questions": []
+    },
+    "setup-time": {
+      "type": "assumption",
+      "label": "Owners will switch it on if setup takes under ten minutes",
+      "detail": "",
+      "status": "explored",
+      "open_questions": []
+    },
+    "early-churn": {
+      "type": "risk",
+      "label": "Members cancel in their first month",
+      "detail": "",
+      "status": "explored",
+      "open_questions": []
+    }
+  },
+  "edges": [
+    {
+      "from": "business",
+      "to": "retention",
+      "type": "motivates",
+      "note": ""
+    },
+    {
+      "from": "retention",
+      "to": "idea",
+      "type": "refines",
+      "note": ""
+    },
+    {
+      "from": "progress-emails",
+      "to": "members",
+      "type": "serves",
+      "note": ""
+    },
+    {
+      "from": "progress-emails",
+      "to": "retention",
+      "type": "achieves",
+      "note": ""
+    },
+    {
+      "from": "owners",
+      "to": "members",
+      "type": "relates-to",
+      "note": "owners pay, members use it"
+    },
+    {
+      "from": "owner-adoption",
+      "to": "solo-dev",
+      "type": "relates-to",
+      "note": "owner support takes time a solo developer doesn't have"
+    },
+    {
+      "from": "streak-first",
+      "to": "members",
+      "type": "serves",
+      "note": ""
+    },
+    {
+      "from": "streak-dashboard",
+      "to": "streak-first",
+      "type": "refines",
+      "note": ""
+    },
+    {
+      "from": "streak-dashboard",
+      "to": "retention",
+      "type": "achieves",
+      "note": ""
+    },
+    {
+      "from": "mvp",
+      "to": "progress-emails",
+      "type": "delivers",
+      "note": ""
+    },
+    {
+      "from": "v2",
+      "to": "streak-dashboard",
+      "type": "delivers",
+      "note": ""
+    },
+    {
+      "from": "mvp",
+      "to": "v2",
+      "type": "precedes",
+      "note": ""
+    },
+    {
+      "from": "owner-adoption",
+      "to": "progress-emails",
+      "type": "threatens",
+      "note": ""
+    },
+    {
+      "from": "setup-time",
+      "to": "owner-adoption",
+      "type": "mitigates",
+      "note": ""
+    }
+  ],
+  "log": [
+    {
+      "at": "2026-11-26T12:00:00Z",
+      "question": "What is the project for?",
+      "answer": "A business: gyms would pay a monthly subscription.",
+      "nodes": [
+        "business"
+      ]
+    },
+    {
+      "at": "2026-11-26T12:00:00Z",
+      "question": "Who uses it and who pays?",
+      "answer": "Members use it; gym owners pay.",
+      "nodes": [
+        "members",
+        "owners"
+      ]
+    },
+    {
+      "at": "2026-11-26T12:00:00Z",
+      "question": "Independent gyms or chains?",
+      "answer": "Independent gyms with one or two locations.",
+      "nodes": [
+        "members"
+      ]
+    },
+    {
+      "at": "2026-11-26T12:00:00Z",
+      "question": "Short or long term?",
+      "answer": "Long term, starting with a 3-month MVP.",
+      "nodes": [
+        "mvp",
+        "v2"
+      ]
+    },
+    {
+      "at": "2026-11-26T12:00:00Z",
+      "question": "What do members see first?",
+      "answer": "Their weekly streak.",
+      "nodes": [
+        "streak-first"
+      ]
+    }
+  ]
+}

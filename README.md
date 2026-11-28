@@ -41,7 +41,9 @@ skills/<skill-name>/
 └── assets/         # optional: templates and files used in output
 template/           # starting point for a new skill: SKILL.md and spec.md
 tools/lint_skills.py              # checks every skill against the rules below
+tools/run_evals.sh                # runs the evals on your Claude plan's usage limits
 tests/                            # unit tests for bundled scripts and the linter
+evals/<skill-name>/               # eval cases: a prompt, graders and optional fixtures
 .claude-plugin/marketplace.json   # groups skills into installable sets
 ```
 
@@ -79,7 +81,21 @@ The linter checks that:
 - Bundled Python scripts parse and import only the standard library, so skills install with no dependencies.
 - Every skill is in a set in `marketplace.json` and linked from this README.
 
-Next: evals run with `claude plugin eval` that compare each skill against the same prompts without it.
+### Evals
+
+Unit tests check the scripts; evals check how an agent behaves with the skill. Each case in `evals/<skill-name>/` is a prompt plus graders, run with `claude plugin eval` (built into Claude Code). Cases come from the spec:
+
+- **Should trigger:** the skill fires and does its first step (for `brainstorm`, asks about purpose or horizon before anything else).
+- **Should not trigger:** a nearby request, such as writing user stories, leaves the skill alone and still gets done.
+- **Resumed:** a fixture graph is copied into the workspace first, to check the skill picks up where it left off and never calls an unfinished brainstorm done.
+
+Every case runs with and without the skill, and the score difference shows what the skill adds. Graders mix tool-call checks, regexes and an LLM judge that votes three times.
+
+Cases use read-only tools only, so they need no OS sandbox; a test enforces this. Evals use model calls, so they run by hand rather than in CI:
+
+```bash
+tools/run_evals.sh --model sonnet              # MAX_COST_USD caps the spend (default 5)
+```
 
 ## License
 

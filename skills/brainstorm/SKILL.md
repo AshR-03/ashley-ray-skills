@@ -131,6 +131,7 @@ Read `references/questions.md` for a question bank for each node type, follow-up
 | `That edge already exists.` | Nothing to do: the link is already recorded. |
 | `check` still fails after every question is closed | Read its report. Isolated nodes and detached groups need a linking question; missing coverage needs a question for that type. Never add `relates-to` edges just to make it pass. |
 | `python: command not found` | Run the script with `python3` instead. |
+| You can't run commands (no shell tool, or it is blocked) | Read `docs/brainstorm/graph.json` directly and apply the definition of done to it yourself, item by item. Ask questions as usual, and tell the owner the graph can't be saved from here. Never call it finished while anything in the definition of done is unmet. |
 | The owner wants to stop early | Offer the wrap-up from step 3: close the remaining questions as `assumption` nodes with their agreement, then `render`. |
 
 ## If AskUserQuestion isn't available

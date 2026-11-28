@@ -1,0 +1,123 @@
+{
+  "title": "Gym app",
+  "horizon": "unknown",
+  "created": "2026-11-26T12:00:00Z",
+  "updated": "2026-11-26T12:00:00Z",
+  "nodes": {
+    "idea": {
+      "type": "idea",
+      "label": "An app that helps small gyms keep members coming back",
+      "detail": "",
+      "status": "explored",
+      "open_questions": []
+    },
+    "business": {
+      "type": "purpose",
+      "label": "Business: sell it to gyms as a subscription",
+      "detail": "",
+      "status": "explored",
+      "open_questions": []
+    },
+    "members": {
+      "type": "stakeholder",
+      "label": "Gym members",
+      "detail": "",
+      "status": "explored",
+      "open_questions": [
+        "Independent gyms or chains?"
+      ]
+    },
+    "owners": {
+      "type": "stakeholder",
+      "label": "Gym owners (they pay)",
+      "detail": "",
+      "status": "explored",
+      "open_questions": []
+    },
+    "retention": {
+      "type": "goal",
+      "label": "Keep members coming back",
+      "detail": "",
+      "status": "explored",
+      "open_questions": []
+    },
+    "progress-emails": {
+      "type": "feature",
+      "label": "Weekly progress emails",
+      "detail": "",
+      "status": "explored",
+      "open_questions": []
+    },
+    "owner-adoption": {
+      "type": "risk",
+      "label": "Gym owners may not adopt it",
+      "detail": "",
+      "status": "explored",
+      "open_questions": []
+    },
+    "solo-dev": {
+      "type": "constraint",
+      "label": "Built by one developer in spare time",
+      "detail": "",
+      "status": "explored",
+      "open_questions": []
+    }
+  },
+  "edges": [
+    {
+      "from": "business",
+      "to": "retention",
+      "type": "motivates",
+      "note": ""
+    },
+    {
+      "from": "retention",
+      "to": "idea",
+      "type": "refines",
+      "note": ""
+    },
+    {
+      "from": "progress-emails",
+      "to": "members",
+      "type": "serves",
+      "note": ""
+    },
+    {
+      "from": "progress-emails",
+      "to": "retention",
+      "type": "achieves",
+      "note": ""
+    },
+    {
+      "from": "owners",
+      "to": "members",
+      "type": "relates-to",
+      "note": "owners pay, members use it"
+    },
+    {
+      "from": "owner-adoption",
+      "to": "solo-dev",
+      "type": "relates-to",
+      "note": "owner support takes time a solo developer doesn't have"
+    }
+  ],
+  "log": [
+    {
+      "at": "2026-11-26T12:00:00Z",
+      "question": "What is the project for?",
+      "answer": "A business: gyms would pay a monthly subscription.",
+      "nodes": [
+        "business"
+      ]
+    },
+    {
+      "at": "2026-11-26T12:00:00Z",
+      "question": "Who uses it and who pays?",
+      "answer": "Members use it; gym owners pay.",
+      "nodes": [
+        "members",
+        "owners"
+      ]
+    }
+  ]
+}

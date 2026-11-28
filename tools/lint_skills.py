@@ -13,6 +13,7 @@ Per skill (skills/<name>/):
     every bundled file is mentioned somewhere in the skill (warning if not).
   - spec.md exists with the required headings (see template/spec.md).
   - Bundled Python scripts parse and import only the standard library.
+  - The skill has eval cases in evals/<name>/ (warning if not).
 
 Across the repository:
   - Every skill is listed exactly once in .claude-plugin/marketplace.json, and
@@ -206,6 +207,13 @@ def lint_skill(skill_dir: Path, root: Path) -> list[Finding]:
     for script in sorted(skill_dir.glob("scripts/**/*.py")):
         findings += lint_python(script, root)
     findings += lint_spec(skill_dir, root)
+
+    evals = root / "evals" / skill_dir.name
+    if not any(evals.glob("**/prompt.md")) and not any(evals.glob("**/case.yaml")):
+        findings.append(Finding(
+            "warning", rel(evals, root),
+            "has no eval cases; add cases from the spec's trigger lists and must/must-not rules",
+        ))
     return findings
 
 
